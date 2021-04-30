@@ -52,8 +52,8 @@ from Hugo
 Concrete Steps
 --------------
 
-  - [] write intro to Clara 
-  - [] build markup interface, drag & drop a json, and print it out
+  - [X] write intro to Clara 
+  - [X] build markup interface, drag & drop a json, and print it out
   - [] make a hello world - level connection to wasm 
   - [] use the rust json validator crate on a dummy json file, just testing the water
   - [] ...
@@ -68,3 +68,7 @@ Stretch Goals
     - [] duplicate names
     - [] proper hierarchies (check all parent-child relationships)
 
+
+Comments to myself
+------------------
+- TODO : convert all functions to async & await syntax, instead of this callback adventure.

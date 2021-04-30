@@ -36,10 +36,15 @@ article {
     text-align: center;
 }
 
+/* todo add some fade */
+
 .dropzone > .selector {
     color: white;
     font-weight:bolder;
-    
+}
+
+.dropzone > .mouse-on {
+    color: orangered;
 }
 
 .drop-enter {

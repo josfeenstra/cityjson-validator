@@ -133,6 +133,14 @@ function setupFileSelectors() {
             return;
         }
 
+        s.addEventListener("mouseenter", () => {
+            s.classList.add("mouse-on")
+        })
+
+        s.addEventListener("mouseleave", () => {
+            s.classList.remove("mouse-on")
+        })
+
         // a little hack to make anything able to ask for file submissions
         s.addEventListener("click", (e) => {
             e.preventDefault();

@@ -1,3 +1,5 @@
+> note: this is a copy from the website
+
 Research Orientation (GEO5010)
 ==============================
 
@@ -52,7 +54,7 @@ How to start a project?
 
 1.  Find a staff of the MSc Geomatics;
 2.  Agree on a topic;
-3.  Send to the coordinator ([Clara García-Sánchez](mailto:c.garcia-sanchez@tudelft.nl)) a half-page summary containing the following:
+3.  Send to the coordinator ((removed email, lets not expose that for everyone)) a half-page summary containing the following:
     
     *   name student
     *   name of the supervisor

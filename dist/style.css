@@ -1,0 +1,43 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    background: orangered;
+    height: 100px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: white;
+}
+
+.dropbox {
+    padding: 50px;
+    border-radius: 10px;
+    border: 5px solid grey;
+    background-color: rgb(177, 177, 177);
+    
+    justify-content: center;
+    text-align: center;
+}
+
+.dropbox > .selector {
+    color: white;
+    font-weight:bolder;
+    
+}

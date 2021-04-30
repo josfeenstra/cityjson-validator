@@ -54,20 +54,20 @@ Concrete Steps
 
   - [X] write intro to Clara 
   - [X] build markup interface, drag & drop a json, and print it out
-  - [] make a hello world - level connection to wasm 
-  - [] give the json string to rust, somehow
-  - [] use the rust json validator crate on a dummy json file, just testing the water
-  - [] ...
-  - [] validate an actual city-json 
+  - [ ] make a hello world - level connection to wasm 
+  - [ ] give the json string to rust, somehow
+  - [ ] use the rust json validator crate on a dummy json file, just testing the water
+  - [ ] ...
+  - [ ] validate an actual city-json 
   
 
 Stretch Goals 
 -------------
   
-  - [] add extra functionality 
-    - [] duplicate vertices
-    - [] duplicate names
-    - [] proper hierarchies (check all parent-child relationships)
+  - [ ] add extra functionality 
+    - [ ] duplicate vertices
+    - [ ] duplicate names
+    - [ ] proper hierarchies (check all parent-child relationships)
 
 
 Comments to myself

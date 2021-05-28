@@ -17,9 +17,13 @@ Concrete Steps
     > [JF] I fixed this by downgrading a certain crate, and by turning certain default features of `jsonschema` off.
   - [X] give the json string to rust, somehow
   - [X] validate an actual city-json 
-  - [ ] print everything that is wrong with the json
+  - [X] print everything that is wrong with the json in rust 
+    - [X] Make the error statements nice: location, kind of error, etc.
+    - [X] if duplicate, show which vertices are duplicate
+  - [ ] print everything that is wrong with the json in the web console
   - [ ] print everything that is wrong with the json in the webpage itself.
-
+  - 
+  
 Stretch Goals 
 -------------
   

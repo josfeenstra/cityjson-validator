@@ -22,8 +22,8 @@ Concrete Steps
     - [X] if duplicate, show which vertices are duplicate
   - [ ] print everything that is wrong with the json in the web console
   - [ ] print everything that is wrong with the json in the webpage itself.
-  - 
-  
+  - [ ] publish to github pages
+
 Stretch Goals 
 -------------
   

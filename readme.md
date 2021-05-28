@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-|By | Jos Feenstra 
+|Author | Jos Feenstra 
 |Email | me@josfeenstra.nl  
 |Supervisor | Hugo Ledoux
 
@@ -15,8 +15,8 @@ What does it validate
 
 <br/><br/>
 
-Design Considerations
----------------------
+Design
+------
 
 ### Why use WebAssembly? 
 
@@ -31,15 +31,13 @@ Design Considerations
 
 ### Why two repo's?
 
+- Decoupling
 
-...
+Both Repo's are created as strip down & pure as possible. This is why typescript, webpack, or web frameworks like react are omitted.
 
-Both Repo's are created as 'strip down' / 'pure' as possible. This is why `typescript`, `webpack`, or web frameworks like react weren't used.
+I find it important to show that this is that not only a way of making something on the web fast, but to also showcase how wasm enables interoperability: giving the web the exact same functionality as a local environment, while still remaining separate from it.
 
-I eventually figured out that the most important feature I would like to display by building all of this using rust & wasm, is that not only is this a way of making something on the web fast, but to also showcase how wasm enables interoperability: giving the web the exact same functionality as a local environment. 
-
-I thus opted to create the cityjson-validator completely separate from the web environment, as just a very normal looking, bare-bones rust project. Additionally
-
+I thus opted to create the `cityjson-validator-rs` completely separate from the web environment, as just a very normal looking, bare-bones rust project.
 
 
 

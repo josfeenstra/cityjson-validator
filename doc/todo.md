@@ -6,10 +6,20 @@ Concrete Steps
 
   - [X] write intro to Clara 
   - [X] build markup interface, drag & drop a json, and print it out
-  - [ ] make a hello world - level connection to wasm 
+  - [X] make a 'on dry land' cityjson validator, aka : a pure rust cli-app which correctly validates a cityjson. 
+    - [X] Build simple cli interface
+    - [X] get serde & jsonschema libraries to work
+    - [X] print out the errors in a consistent way
+  - [X] make a hello world - level connection to wasm 
+    > [JF] I completed a bit of the tutorial on the rust X wasm page, where you have to implement the game of life. 
+
+  - [ ] overcome obstacle : jsonschema crate is not compilable to wasm
+    - [.] option 1 : fork the repo, remove all calls to I/O type business, we wont need them
+      - [ ] how to refer to a local crate 
+    - [ ] option 2 : see if a workaround can be created using wasm bindgen 
+      - [ ] ...
+
   - [ ] give the json string to rust, somehow
-  - [ ] use the rust json validator crate on a dummy json file, just testing the water
-  - [ ] ...
   - [ ] validate an actual city-json 
   
 

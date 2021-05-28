@@ -13,21 +13,18 @@ Concrete Steps
   - [X] make a hello world - level connection to wasm 
     > [JF] I completed a bit of the tutorial on the rust X wasm page, where you have to implement the game of life. 
 
-  - [ ] overcome obstacle : jsonschema crate is not compilable to wasm
-    - [.] option 1 : fork the repo, remove all calls to I/O type business, we wont need them
-      - [ ] how to refer to a local crate 
-    - [ ] option 2 : see if a workaround can be created using wasm bindgen 
-      - [ ] ...
-
-  - [ ] give the json string to rust, somehow
-  - [ ] validate an actual city-json 
-  
+  - [X] overcome obstacle : jsonschema crate is not compilable to wasm
+    > [JF] I fixed this by downgrading a certain crate, and by turning certain default features of `jsonschema` off.
+  - [X] give the json string to rust, somehow
+  - [X] validate an actual city-json 
+  - [ ] print everything that is wrong with the json
+  - [ ] print everything that is wrong with the json in the webpage itself.
 
 Stretch Goals 
 -------------
   
   - [ ] add extra functionality 
-    - [ ] duplicate vertices
+    - [X] duplicate vertices
     - [ ] duplicate names
     - [ ] proper hierarchies (check all parent-child relationships)
 

@@ -22,7 +22,7 @@ Concrete Steps
     - [X] if duplicate, show which vertices are duplicate
   - [ ] print everything that is wrong with the json in the web console
   - [ ] print everything that is wrong with the json in the webpage itself.
-  - [ ] publish to github pages
+  - [X] publish to github pages
 
 Stretch Goals 
 -------------
@@ -62,7 +62,13 @@ Links
 =====
 
 - inspired by: [gltf validator](https://github.khronos.org/glTF-Validator/)       
-- [rust + wasm book](https://rustwasm.github.io/docs/book/introduction.html)
 - [serde (json IO)](https://docs.serde.rs/serde_json/)
 - [rust triangulation](https://hugoledoux.github.io/startin_wasm/www/dist/)
+
+
+Important documentation
+=======================
+
+- [rust + wasm book](https://rustwasm.github.io/docs/book/introduction.html)
+- [wasm-pack book](https://rustwasm.github.io/docs/wasm-pack/)
 

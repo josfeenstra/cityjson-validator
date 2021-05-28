@@ -10,4 +10,4 @@ I used [this](https://github.com/rustwasm/rust-webpack-template) template. I cho
 - no yaml files, custom allocators, or other bonus features.
   - I don't want to think about those features at this stage, lets just create something which works, then afterwards optimize it. 
 
-
+> [JF] This is an old note. I eventually used my 'own' template, namely, two separate repo's. 

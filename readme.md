@@ -13,7 +13,39 @@ What does it validate
 * This web tool validates a given json against the [latest](https://3d.bk.tudelft.nl/schemas/cityjson/1.0.2/cityjson.min.schema.json) cityjson schema.
 
 
-installation
+<br/><br/>
+
+Design Considerations
+---------------------
+
+### Why use WebAssembly? 
+
+- To gain access some [very fast](https://github.com/Stranger6667/jsonschema-rs) libaries. 
+- The ability to run the exact same code locally & on the web.
+
+### Why use Rust?
+
+- Rust offers fantastic support for wasm with `wasm-bindgen`, `wasm-pack`, and the fact that the rust compiler supports wasm straight out of the box. 
+- Additionally, the design considerations rust is build upon (performance + safety) is a huge potential for geospatial activities. 
+
+
+### Why two repo's?
+
+
+...
+
+Both Repo's are created as 'strip down' / 'pure' as possible. This is why `typescript`, `webpack`, or web frameworks like react weren't used.
+
+I eventually figured out that the most important feature I would like to display by building all of this using rust & wasm, is that not only is this a way of making something on the web fast, but to also showcase how wasm enables interoperability: giving the web the exact same functionality as a local environment. 
+
+I thus opted to create the cityjson-validator completely separate from the web environment, as just a very normal looking, bare-bones rust project. Additionally
+
+
+
+
+<br/><br/>
+
+Installation
 ------------
 
 ```
@@ -21,10 +53,13 @@ git clone https://github.com/josfeenstra/cityjson-validator
 cd cityjson-validator
 ```
 
-then host the `/dist` folder using something akin to [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) or [Chrome Live Server](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).
+then host the `/docs` folder using something akin to [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) or [Chrome Live Server](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb). The folder is named `/docs` due to github pages's hosting conventions...
 
+To build the black box where all the magic happens, `/docs/bin`, see [cityjson-validator-rs](https://github.com/josfeenstra/cityjson-validator-rs)
 
-credits
+<br/><br/>
+
+Credits
 -------
 
 - Written as a GEO5010 research project for the Msc Geomatics @ Tu Delft 

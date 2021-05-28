@@ -1,4 +1,4 @@
-export { initFileSelectors };
+export { initFileRetrievers };
 
 
 /** process a json
@@ -96,9 +96,10 @@ function setupDragAndDrop(element, callback, dropclass="drop-enter") {
 
 /**
  * Hook up everything
- * TODO: properly parameterise this procedure
+ * TODO: properly parameterize this procedure
+ * @param {(fileAsString: string) => void} callback what to run when files are recieved
  */
-function initFileSelectors(callback) {
+function initFileRetrievers(callback) {
 
     // setup file input
     let input = document.getElementById("file-input");

@@ -4,7 +4,7 @@
 
 import { initFileRetrievers } from './js/file-retrieval.js';
 import { Stopwatch } from "./js/stopwatch.js";
-import init, { CityJsonValidator } from './bin/cityjson_validator.js';
+import init, { CityJsonValidator } from './wasm/cityjson_validator.js';
 
 // I'm getting cross-origin troubles using this directly, so im using a local file instead. 
 // const PATH_TO_CITYJSON_SCHEMA = "https://3d.bk.tudelft.nl/schemas/cityjson/1.0.2/cityjson.min.schema.json";

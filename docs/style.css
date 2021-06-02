@@ -26,6 +26,11 @@ article {
     background: white;
 }
 
+.output {
+    padding: 10px;
+    transition: 0.5s;
+}
+
 .dropzone {
     padding: 50px;
     border-radius: 10px;
@@ -34,6 +39,7 @@ article {
     
     justify-content: center;
     text-align: center;
+    transition: 0.5s;
 }
 
 /* todo add some fade */

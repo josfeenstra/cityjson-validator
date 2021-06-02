@@ -11,6 +11,7 @@ import init, { CityJsonValidator } from './bin/cityjson_validator.js';
 const PATH_TO_CITYJSON_SCHEMA = './data/cityjson.min.schema.json'
 var validator;
 const stopwatch = Stopwatch.new();
+var logContext = null;
 
 async function main() {
 
@@ -31,7 +32,7 @@ async function main() {
     initFileRetrievers(validate);
     
     // make sure we log straight into html 
-    let logContext = document.getElementsByClassName("output")[0];
+    logContext = document.getElementsByClassName("output")[0];
     highjackLogger(logContext);
 }
 
@@ -54,8 +55,10 @@ function validate(cityjsonInstance) {
     console.log("---------------");
     if (res) {
         console.log("json is valid!");
+        logContext.style = "background: lightgreen";
     } else {
         console.log("json is NOT valid!");
+        logContext.style = "background: pink";
     }
     console.log("...");
     stopwatch.log("this");
@@ -81,6 +84,7 @@ function highjackLogger(context) {
 
     console.clear = function() {
         context.innerHTML = "";
+        context.style = "";
         console.clearOld();
     }
 }

@@ -75,7 +75,7 @@ Process
 When starting something new, it is often nice to start from what you do know, and then proceed to tackle the unknown. This is why I started out by just creating a website in which you could drag & drop or select a json file. I have done similar things before, so after a bit of wrestling with the way javascript deals with events, callbacks, and the way css works, the website itself was there: 
 
 
-(Image Website). 
+<img src="images/"/>
 
 
 A bit bland maybe, but hey it works! At least, you could select a json file, and it would print it out in the console as a `.js` object. 
@@ -91,8 +91,8 @@ It took some time to get the hang of rust, wasm, and the different tools aiding 
 
 I found three main ways of doing this: 
 - The [Recommended]() way of setting up a rust-wasm project, 
-- The [Monorepo] style of setting up, and
-- The [No Webpack]() version. 
+- The [Monorepo]() style of setting up, and
+- The [No Webpack](https://www.furidamu.org/blog/2020/07/10/rust-webassembly-in-the-browser/) version. 
 
 
 
@@ -103,9 +103,7 @@ I found three main ways of doing this:
 
 ## 3. Rust
 
-It was at this point that I 
-
-The instinct to go back to Rust, and to test code 'on dry land' (dutch saying: 'op 't droge') before diving in deep waters.
+It was at this point that I followed my instinct to go back to Rust, and test the code 'on dry land' (dutch saying: 'op 't droge') before diving in deep Wasm waters. 
 
 ...
 
@@ -115,18 +113,9 @@ The instinct to go back to Rust, and to test code 'on dry land' (dutch saying: '
 
 Now that the cityjson validator was working on a basic level, it had to somehow be incorporated within the website created at **1**. The funny thing is that my instinct to go back to only using rust, also appeared to be the solution to all my code architecture troubles at **2**. It's a huge feature, that the exact same piece of code can be run locally & online. Additionally, the fact that the javascript & rust environments don't need to know each other directly is a very nice [decoupling](https://gameprogrammingpatterns.com/decoupling-patterns.html) feature. 
 
-I now knew exactly what I wanted to do
+Now I knew exactly what I wanted to do: the 'no-webpack' wasm variant. This was surprisingly simple to set up. The only thing that was hard, was that one of the sub-libraries being used by the json-validation library, turned out to be [not wasm ready](https://github.com/kellpossible/cargo-i18n/issues/70). While this bug was difficult to track, I found it suprising, however, how many of all the other libaries being used where completely fine with parsing to wasm. 
 
-
-
-
-
-
-
-
-...
-
-In the rust code itself, only three additions had to be made:
+All of this just meant some tiny changes in the cargo.toml build file. In the rust code itself, only three additions had to be made:
 
 ```rust
 extern crate serde_json;
@@ -225,4 +214,8 @@ impl CityJsonValidator {
 
 This way, we can control what parts of our class are exposed to rust and the cli-environment, and which parts are accessible by javascript using wasm. This is technically needed, since the 'Json' objects are Rust objects, which we do not wish to expose to javascript. Strings are much easier to pass between rust & javascript than cascading objects / enums.
 
-But, during development, it was also really useful to think of the wasm-exposed parts as an extension of the `private` and `public` sequence: `private`, `public`, and then something like `super-public`. I've got a couple of good ideas for the code architecture
+But, during development, it was also really useful to think of the wasm-exposed parts as an extension of the `private` and `public` sequence: `private`, `public`, and then something like `super-public`. This is a very helpful idea that will surely be of good use during my follow-up thesis on this subject.
+
+At this point, the project was running basically: a user can submit a cityjson on the web, and figure out
+
+

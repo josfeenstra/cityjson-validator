@@ -27,14 +27,61 @@ async function main() {
     stopwatch.log("initalized validator")
 
     // bootstrap all the file select / drag&drop functionality
+    // once we get something with a .json extension -> pass it to the 'validate' function
     initFileRetrievers(validate);
+    
+    // make sure we log straight into html 
+    let logContext = document.getElementsByClassName("output")[0];
+    highjackLogger(logContext);
 }
 
+/**
+ * validate a cityjson
+ * @param {string} cityjsonInstance 
+ */
 function validate(cityjsonInstance) {
+    
+    // prepare
+    console.clear();
     stopwatch.time();
+
+    // the actual validation
     let res = validator.validate_from_str(cityjsonInstance);
-    console.log("response", res);
-    stopwatch.log("validated cityjson");
+
+    // print feedback to user
+    console.log("---------------");
+    console.log("| Conclusion: |");
+    console.log("---------------");
+    if (res) {
+        console.log("json is valid!");
+    } else {
+        console.log("json is NOT valid!");
+    }
+    console.log("...");
+    stopwatch.log("this");
+}
+
+/**
+ * highjack the console.log functionality, 
+ * so we can also show the logs on the webpage itself
+ * @param {HTMLElement} context
+ */
+function highjackLogger(context) {
+
+    console.logOld = console.log;
+    console.clearOld = console.clear;
+    
+    console.log = function() {
+        for (var i = 0; i < arguments.length; i++) {
+            context.innerHTML += '<code>' + arguments[i] + '</code>'+  '<br />';
+        }
+        console.logOld(...arguments);
+    }
+
+    console.clear = function() {
+        context.innerHTML = "";
+        console.clearOld();
+    }
 }
 
 main();

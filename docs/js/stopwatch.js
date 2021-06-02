@@ -19,7 +19,7 @@ export class Stopwatch {
     }
 
     log(event) {
-        console.log(`${event}. took: ${this.time()} ms`);
+        console.log(`${event} took: ${this.time()} ms`);
     }
 
     _getTime() {

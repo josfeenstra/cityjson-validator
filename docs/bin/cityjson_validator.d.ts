@@ -14,6 +14,10 @@ export class CityJsonValidator {
 * @returns {boolean}
 */
   validate_from_str(instance_string: string): boolean;
+/**
+* @returns {string}
+*/
+  static get_errors(): string;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -23,8 +27,11 @@ export interface InitOutput {
   readonly __wbg_cityjsonvalidator_free: (a: number) => void;
   readonly cityjsonvalidator_new_from_string: (a: number, b: number) => number;
   readonly cityjsonvalidator_validate_from_str: (a: number, b: number, c: number) => number;
+  readonly cityjsonvalidator_get_errors: (a: number) => void;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
+  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
+  readonly __wbindgen_free: (a: number, b: number) => void;
 }
 
 /**

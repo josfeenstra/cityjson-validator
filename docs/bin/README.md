@@ -1,23 +1,58 @@
-# dry-cityjson-validator 
+# cityjson-validator-rs 
 
-A pure rust implementation of a (city) json validator.
-
-## considerations
-
-- Code should be able to run both from wasm, and 'on dry land' using the normal cli.
-- I am very new to rust, so i'm trying to do this 'by the book' as much as possible.
+A cli tool which validates a cityjson file according to a schema, and certain other properties
 
 
-# build 
+
+# properties the validator tests against
+
+- [X] The cityjson must match the 1.0.2 [cityjson-schema](https://www.cityjson.org/specs/overview/) 
+- [X] Vertices cannot be duplicate 
+- [X] Proper building hierarchies
+   - [X] 1st level city objects cannot have parents -> schema should take care of this 
+      - [X] if they have children, they must exist
+   - [X] 2nd level city objects must have at least 1 parent -> schema should take care of this
+      - [X] this parent must exist
+   - [X] parent-child relationships must be mutual (parent pointing to child, child pointing to parent)
+- [ ] no duplicate keys in general
+   - [ ] names (hashes) cannot be duplicate
+
+
+
+# Install 
+
 ```
+git clone https://github.com/josfeenstra/cityjson-validator-rs
+cd cityjson-validator-rs
 cargo build
 ```
-or
+
+
+# Local usage 
+```
+target/debug/validator.exe [absolute path to schema] [absolute path to cityjson file] 
+```
+
+# Web usage
+
+Download [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
+
+Then run
+
 ```
 wasm-pack build -t web
 ```
+for a local `/pkg`, or run 
+```
+wasm-pack build -t web --out-dir ../cityjson-validator/docs/bin/
+```
 
-# run 
-```
-validator.exe [absolute path to schema] [absolute path to cityjson file] 
-```
+Then run it like we do [here](https://github.com/josfeenstra/cityjson-validator).
+
+
+Credits
+-------
+
+- Written as a GEO5010 research project for the Msc Geomatics @ Tu Delft 
+
+

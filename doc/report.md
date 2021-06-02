@@ -30,16 +30,41 @@ Cityjson validator on the web using Rust & Wasm
 
 
 
+
+
 Opdracht
 --------
 
+
+What
+----
+
+The subject of this research-orientation project is building a webpage in which you can load a cityjson file. This json is then subject to a number of validity tests, after which we respond the result of these tests to the user. 
+
+The tool was meant to be a webpage as opposed to a local piece of software, to improve the accessibility of the tool. However, during development, It became clear that it would be quite beneficial to make it **both** a local cli tool to be used on windows / mac / linux, and a web application. The local tool will ensure that we can also process a number of local files quickly and easily.
+
+To ensure performance, and to gain access to very powerfull libraries, a language other than `Javascript` was needed. The language `Rust` was used, and compiled for web usage using WebAssembly. This is a very new language, and a new way of delivering web applications in general. Using Rust & WebAssembly, often shortened as Wasm, the process could be much faster and more reliable than only using Javascript. 
 
 
 Deliverables
 ------------
 
+- [X] Learn Rust
+  - [X] the basics needed to created traits (classes) with a simple lay-out
 
+- [X] Using Rust for a Geomatics application
+  - [X] How to read through a json file using Rust
+  - [X] How to use a low-level json validator using Rust
 
+- [X] Deploying WebAssembly
+  - [X] Which browsers to support it?
+    -> [can be found here](https://webassembly.org/roadmap/)
+  - [X] How to send complex data back and forth between Javascript & Rust?
+    -> answer: wasm-bindgen 'shims'.
+  - [X] How much of this 'glue code' is needed?
+    -> I kept it as small as I could get away with. You can see inside of the `/docs/bin` folder, that we don't actually need that much glue code. 
+  - [X] What needs to be done to deploy with as little 'glue code' as possible?
+    -> avoiding webpack means that we have to start treating the rust code as an entirely separate thing. This is an advantage in the sense of decoupling, but a disadvantage for rapid debugging for example. 
 
 Process
 =======

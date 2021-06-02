@@ -37,7 +37,7 @@ Both Repo's are created as strip down & pure as possible. This is why typescript
 
 I find it important to show that this is that not only a way of making something on the web fast, but to also showcase how wasm enables interoperability: giving the web the exact same functionality as a local environment, while still remaining separate from it.
 
-I thus opted to create the `cityjson-validator-rs` completely separate from the web environment, as just a very normal looking, bare-bones rust project.
+I thus opted to create the [cityjson-validator-rs](https://github.com/josfeenstra/cityjson-validator-rs) completely separate from the web environment, as just a very normal looking, bare-bones rust project.
 
 
 

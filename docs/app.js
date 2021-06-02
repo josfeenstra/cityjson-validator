@@ -59,6 +59,7 @@ function validate(cityjsonInstance) {
     }
     console.log("...");
     stopwatch.log("this");
+    console.log("Have a nice day!");
 }
 
 /**

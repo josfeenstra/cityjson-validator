@@ -2,6 +2,13 @@ html {
     font-family: sans-serif;
 }
 
+
+code {
+    font-family: Consolas,"courier new";
+    padding: 2px;
+    /* font-size: 105%; */
+  }
+
 body {
     
     max-width: 1000px;
@@ -20,7 +27,7 @@ h1 {
     margin: 0;
 }
 
-article {
+article, footer {
     padding: 10px;
     margin: 10px;
     background: white;

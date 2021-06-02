@@ -51,7 +51,7 @@ Process
 When starting something new, it is often nice to start from what you do know, and then proceed to tackle the unknown. This is why I started out by just creating a website in which you could drag & drop or select a json file. I have done similar things before, so after a bit of wrestling with the way javascript deals with events, callbacks, and the way css works, the website itself was there: 
 
 
-<img src="images/website.PNG" style="max-height: 400px"/>
+<img src="./images/website.PNG" style="max-height: 400px"/>
 
 
 A bit bland maybe, but hey it works! At least, you could select a json file, and it would print it out in the console as a `Javascript Object` . 

@@ -8,6 +8,12 @@
 
 <br>
 
+
+Online
+------
+[Here](https://josfeenstra.github.io/cityjson-validator/)
+
+
 What does it validate 
 ---------------------
 * This web tool validates a given json against the [latest](https://3d.bk.tudelft.nl/schemas/cityjson/1.0.2/cityjson.min.schema.json) cityjson schema.

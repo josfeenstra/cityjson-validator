@@ -11,7 +11,7 @@
 
 Online
 ------
-[Here](https://josfeenstra.github.io/cityjson-validator/)
+[Here](https://josfeenstra.github.io/cj-val/)
 
 
 What does it validate 

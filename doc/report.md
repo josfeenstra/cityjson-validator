@@ -19,8 +19,8 @@ The tool was meant to be a webpage as opposed to a local piece of software, to i
 To ensure performance, and to gain access to very powerfull libraries, a language other than `Javascript` was needed. The language `Rust` was used, and compiled for web usage using WebAssembly. This is a very new language, and a new way of delivering web applications in general. Using Rust & WebAssembly, often shortened as Wasm, the process could be much faster and more reliable than only using Javascript. 
 
 
-Deliverables
-------------
+Learning Objectives
+-------------------
 
 - [X] Learn Rust
   - [X] the basics needed to created traits (classes) with a simple lay-out

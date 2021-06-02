@@ -1,7 +1,7 @@
 TODO
 ====
 
-Concrete Steps
+All Steps
 --------------
 
   - [X] write intro to Clara 
@@ -23,21 +23,22 @@ Concrete Steps
   - [X] print everything that is wrong with the json in the web console
   - [X] print everything that is wrong with the json in the webpage itself.
   - [X] publish to github pages
+  - [X] send report to clara
 
 Stretch Goals 
 -------------
   
 - [ ] add extra functionality 
-  - [X] duplicate vertices
-  - [ ] duplicate names 
+  - [X] check for duplicate vertices
+  - [ ] check for duplicate names 
 > no idea how to do this...
 
-  - [X] proper hierarchies (check all parent-child relationships)
+  - [X] check if hierarchies are correct (check all parent-child relationships)
   - [ ] automatically load the latest schema from the schema site, instead of this hardcoded solution.
 
 
-from Hugo
----------
+Original mail from Hugo
+-----------------------
 
 - make the equivalent of [gltf validator](https://github.khronos.org/glTF-Validator/) : 
   - a simple page where you drag a cityjson file and you get the report of the schema validation

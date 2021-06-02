@@ -20,17 +20,20 @@ Concrete Steps
   - [X] print everything that is wrong with the json in rust 
     - [X] Make the error statements nice: location, kind of error, etc.
     - [X] if duplicate, show which vertices are duplicate
-  - [ ] print everything that is wrong with the json in the web console
-  - [ ] print everything that is wrong with the json in the webpage itself.
+  - [X] print everything that is wrong with the json in the web console
+  - [X] print everything that is wrong with the json in the webpage itself.
   - [X] publish to github pages
 
 Stretch Goals 
 -------------
   
-  - [ ] add extra functionality 
-    - [X] duplicate vertices
-    - [ ] duplicate names
-    - [ ] proper hierarchies (check all parent-child relationships)
+- [ ] add extra functionality 
+  - [X] duplicate vertices
+  - [ ] duplicate names 
+> no idea how to do this...
+
+  - [X] proper hierarchies (check all parent-child relationships)
+  - [ ] automatically load the latest schema from the schema site, instead of this hardcoded solution.
 
 
 from Hugo
@@ -39,18 +42,25 @@ from Hugo
 - make the equivalent of [gltf validator](https://github.khronos.org/glTF-Validator/) : 
   - a simple page where you drag a cityjson file and you get the report of the schema validation
 
+> [JF] This works right now!
+
 - ideally should be w/o npm or large package manager. 
   - [This seems promising](http://www.furidamu.org/blog/2020/07/10/rust-webassembly-in-the-browser/) (parceljs is what Stelios uses but I’ve never used it)
+
+> [JF] Didn't use any package manager aside from `wasm-pack`. Thank you for that link btw! it was really instrumental. 
 
 - The validation should be only in the browser, no upload of a file anywhere 
 > [JF] drag & drop, or 'select file', check!_
 
 - The latest schema of cityjson (minified) is there: https://3d.bk.tudelft.nl/schemas/cityjson/1.0.2/cityjson.min.schema.json
-- So the idea is to use WASM/Rust, the best/fastest validator is https://docs.rs/jsonschema/0.6.1/jsonschema/
 
+> [JF] I hardcoded it into the repo. 
+
+- So the idea is to use WASM/Rust, the best/fastest validator is https://docs.rs/jsonschema/0.6.1/jsonschema/
 - The rust code for validation should be minimal here, I fiddled 2h a while ago to test it: (link removed)
 - The validator of cjio has more custom functions to validate, but I will code those after (eg checking duplicate vertices, cannot be done with a schema…).
 
+> [JF] I've done a couple already, but not all of them.
 
 Comments to myself
 ------------------

@@ -29,15 +29,8 @@ Cityjson validator on the web using Rust & Wasm
 |Supervisor | Hugo Ledoux
 
 
-
-
-
-Opdracht
---------
-
-
-What
-----
+Subject
+-------
 
 The subject of this research-orientation project is building a webpage in which you can load a cityjson file. This json is then subject to a number of validity tests, after which we respond the result of these tests to the user. 
 
@@ -66,8 +59,12 @@ Deliverables
   - [X] What needs to be done to deploy with as little 'glue code' as possible?
     -> avoiding webpack means that we have to start treating the rust code as an entirely separate thing. This is an advantage in the sense of decoupling, but a disadvantage for rapid debugging for example. 
 
+<br/><br/>
+
+
 Process
 =======
+
 
 
 ## 1. Website
@@ -80,8 +77,7 @@ When starting something new, it is often nice to start from what you do know, an
 
 A bit bland maybe, but hey it works! At least, you could select a json file, and it would print it out in the console as a `.js` object. 
 
-
-
+<br/><br/>
 
 ## 2. The Code Architecture 
 
@@ -99,6 +95,7 @@ I found three main ways of doing this:
 
 ...
 
+<br/><br/>
 
 
 ## 3. Rust
@@ -107,6 +104,7 @@ It was at this point that I followed my instinct to go back to Rust, and test th
 
 ...
 
+<br/><br/>
 
 
 ## 4. The Solution 
@@ -212,10 +210,20 @@ impl CityJsonValidator {
 }
 ```
 
-This way, we can control what parts of our class are exposed to rust and the cli-environment, and which parts are accessible by javascript using wasm. This is technically needed, since the 'Json' objects are Rust objects, which we do not wish to expose to javascript. Strings are much easier to pass between rust & javascript than cascading objects / enums.
+This way, we can control what parts of our trait / class are exposed to rust and the cli-environment, and which parts are accessible by javascript using wasm. This is technically needed, since the 'Json' objects are Rust objects, which we do not wish to expose to javascript. Strings are much easier to pass between rust & javascript than cascading objects / enums.
 
 But, during development, it was also really useful to think of the wasm-exposed parts as an extension of the `private` and `public` sequence: `private`, `public`, and then something like `super-public`. This is a very helpful idea that will surely be of good use during my follow-up thesis on this subject.
 
 At this point, the project was running basically: a user can submit a cityjson on the web, and figure out
+
+<br/><br/>
+
+Result 
+------
+
+The result of this endeavour can be found [here](https://github.com/josfeenstra/cityjson-validator/). All must-deliverables are working, and a couple of stretch goals are met. More documentation can be found [here](https://github.com/josfeenstra/cityjson-validator/tree/main/doc)
+
+
+
 
 

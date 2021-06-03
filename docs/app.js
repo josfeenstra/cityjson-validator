@@ -77,7 +77,8 @@ function highjackLogger(context) {
     
     console.log = function() {
         for (var i = 0; i < arguments.length; i++) {
-            context.innerHTML += '<code>' + arguments[i] + '</code>'+  '<br />';
+            let string = arguments[i].replace("\n", "<br\>");
+            context.innerHTML += '<code>' + string + '</code>'+  '<br/>';
         }
         console.logOld(...arguments);
     }

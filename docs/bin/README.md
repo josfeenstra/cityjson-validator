@@ -1,8 +1,8 @@
-# cityjson-validator-rs 
+# cityjson-validator-rust
 
 A cli tool which validates a cityjson file according to a schema, and certain other properties
 
-
+<br/>
 
 # properties the validator tests against
 
@@ -17,21 +17,24 @@ A cli tool which validates a cityjson file according to a schema, and certain ot
 - [ ] no duplicate keys in general
    - [ ] names (hashes) cannot be duplicate
 
-
+<br/>
 
 # Install 
 
 ```
-git clone https://github.com/josfeenstra/cityjson-validator-rs
+git clone https://github.com/josfeenstra/cj-val-rs
 cd cityjson-validator-rs
 cargo build
 ```
 
+<br/>
 
 # Local usage 
 ```
 target/debug/validator.exe [absolute path to schema] [absolute path to cityjson file] 
 ```
+
+<br/>
 
 # Web usage
 
@@ -47,11 +50,11 @@ for a local `/pkg`, or run
 wasm-pack build -t web --out-dir ../cityjson-validator/docs/bin/
 ```
 
-Then run it like we do [here](https://github.com/josfeenstra/cityjson-validator).
+Then run it like we do [here](https://github.com/josfeenstra/cj-val).
 
+<br/>
 
-Credits
--------
+# Credits
 
 - Written as a GEO5010 research project for the Msc Geomatics @ Tu Delft 
 

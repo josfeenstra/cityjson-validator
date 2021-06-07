@@ -7,10 +7,9 @@ code {
     font-family: Consolas,"courier new";
     padding: 2px;
     font-size: 95%;
-  }
+}
 
 body {
-    
     max-width: 1000px;
     margin: auto;
 }

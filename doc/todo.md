@@ -86,15 +86,15 @@ Second mail from Hugo
     - Q: fetch schema based on the version (for v1.1)
     - Q: “The cityjson must match the 1.0.2” ==> always only ”version”: “1.0” or 1.1, not the patch number
       TODO: 
-      - [ ] in js: deserialize first 100 characters or so to discover the version
-        - [ ] ignore hardcore validation: just parse the string, search for the `\"version\"\:` string exactly using regex
-        - [ ] pick latest version if you cannot find a version
-        - [ ] extract major and minor version
+      - [X] in js: deserialize first 100 characters or so to discover the version
+        - [X] ignore hardcore validation: just parse the string, search for the `\"version\"\:` string exactly using regex
+        - [X] pick latest version if you cannot find a version
+        - [X] extract major and minor version
         - [ ] make sure it exists, add some local fail-save if the website is down or something
       - [ ] Fetch the this version from the site.
-        - [ ] cross origin funky business   
+        - [ ] solve cross origin funky business...
 
-> [JF]: I will try to do this at the js side of things. 
+> [JF]: I will try to do this at the js side of things. Update: I got stuck at cross-origin troubles. Must learn more about cross-origin web pages in general...
 
 - Q: what about creating a cjval library and have it as a rust package at crates.io? Then the code for the wasm/website just use that?
 

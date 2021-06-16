@@ -63,6 +63,63 @@ Original mail from Hugo
 
 > [JF] I've done a couple already, but not all of them.
 
+
+
+Second mail from Hugo
+-----------------------
+
+- Q: how many hours you spend?
+  -> Enough, but I'm fine with spending some more hours to truly finish this :)
+
+- Q: validate_hierarchy() ==> parent-child relationship is a better name IMO, I was confused at first
+  -> [X] TODO : fix a name
+
+- Q: robust for?
+    - Q: non-json input
+      - [X] TODO : better error messages when deserialization fails
+    - Q: non cityjson input
+
+> [JF] : It handles it no problem. the validator just states that none of the schema elements are present. 
+> The User will have to surmise that this means that the json he/she presented is not a cityjson at all.
+> Still, we could build something which makes this more explicit 
+
+    - Q: fetch schema based on the version (for v1.1)
+    - Q: “The cityjson must match the 1.0.2” ==> always only ”version”: “1.0” or 1.1, not the patch number
+      TODO: 
+      - [ ] in js: deserialize first 100 characters or so to discover the version
+        - [ ] ignore hardcore validation: just parse the string, search for the `\"version\"\:` string exactly using regex
+        - [ ] pick latest version if you cannot find a version
+        - [ ] extract major and minor version
+        - [ ] make sure it exists, add some local fail-save if the website is down or something
+      - [ ] Fetch the this version from the site.
+        - [ ] cross origin funky business   
+
+> [JF]: I will try to do this at the js side of things. 
+
+- Q: what about creating a cjval library and have it as a rust package at crates.io? Then the code for the wasm/website just use that?
+
+> could work I think... but this would still require rust wrapper code added to the website code. If you want to publish a package straight for web usage, 
+> that is possible, but that would mean creating a NPM package. npm can contain wasm, so this could work. 
+> I will deal with npm & crates eventually for my thesis. I will inform you if I have figured out a nicer way for distributing this using either crates or npm. 
+
+- Q: could you remove the dash from the name?
+
+> [JF]: cj-val -> cjval, got it!
+
+- Q: what about for the website having a table with the tests as rows and a green/yellow/red light column? That would mean that you call only certain tests (like duplicate vertices) when the schema is valid in the first place (like you did, this is fine). Each validation function should be public/exposed, but this is easy
+
+> [JF]: ehhh, Im less sure about this one. The jsons whould have to be deserialized for each 
+> step, I'm not sure how passing deserialized jsons between javascript and rust will work. 
+> Also, if the user skips the schema validate check, We have no way of knowing for 
+> sure if all cityjson elements are present.
+>
+> But I agree that the user should have some agency in turning on and off additional 
+> checkers, to speed things up. 
+
+
+
+
+
 Comments to myself
 ------------------
 - TODO : convert all functions to async & await syntax, instead of this callback adventure.

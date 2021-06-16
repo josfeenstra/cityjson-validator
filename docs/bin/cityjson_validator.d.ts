@@ -15,6 +15,9 @@ export class CityJsonValidator {
 */
   validate_from_str(instance_string: string): boolean;
 /**
+* TODO: this would spit out the gathered errors in an ideal world. 
+*
+* [JF]: Haven't done it yet, since rust's borrow checker doesnt like it if I gather errors during non-mutable function calls. 
 * @returns {string}
 */
   static get_errors(): string;

@@ -151,6 +151,9 @@ export class CityJsonValidator {
         return ret !== 0;
     }
     /**
+    * TODO: this would spit out the gathered errors in an ideal world.
+    *
+    * [JF]: Haven't done it yet, since rust's borrow checker doesnt like it if I gather errors during non-mutable function calls.
     * @returns {string}
     */
     static get_errors() {
@@ -216,6 +219,9 @@ async function init(input) {
     };
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
+    };
+    imports.wbg.__wbindgen_rethrow = function(arg0) {
+        throw takeObject(arg0);
     };
 
     if (typeof input === 'string' || (typeof Request === 'function' && input instanceof Request) || (typeof URL === 'function' && input instanceof URL)) {

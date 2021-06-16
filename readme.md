@@ -11,7 +11,7 @@
 
 Online
 ------
-[Here](https://josfeenstra.github.io/cj-val/)
+[Here](https://josfeenstra.github.io/cjval/)
 
 
 What does it validate 

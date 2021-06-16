@@ -5,10 +5,8 @@
 import { initFileRetrievers } from './js/file-retrieval.js';
 import { Stopwatch } from "./js/stopwatch.js";
 import init, { CityJsonValidator } from './bin/cityjson_validator.js';
+import { GetCJSchema } from './js/schema-version.js';
 
-// I'm getting cross-origin troubles usng this directly, so im using a local file instead. 
-// const PATH_TO_CITYJSON_SCHEMA = "https://3d.bk.tudelft.nl/schemas/cityjson/1.0.2/cityjson.min.schema.json";
-const PATH_TO_CITYJSON_SCHEMA = './data/cityjson.min.schema.json'
 var validator;
 const stopwatch = Stopwatch.new();
 var logContext = null;
@@ -17,15 +15,6 @@ async function main() {
 
     // init wasm
     await init(); 
-
-    // get the schema.json as a string
-    const res = await fetch(PATH_TO_CITYJSON_SCHEMA);
-    const schemaStr = await res.text();
-
-    // init the validator using the schema
-    stopwatch.time();
-    validator = CityJsonValidator.new_from_string(schemaStr);
-    stopwatch.log("initalized validator")
 
     // bootstrap all the file select / drag&drop functionality
     // once we get something with a .json extension -> pass it to the 'validate' function
@@ -40,20 +29,26 @@ async function main() {
  * validate a cityjson
  * @param {string} cityjsonInstance 
  */
-function validate(cityjsonInstance) {
+async function validate(cityjsonInstance) {
     
     // prepare
-    console.clear();
     stopwatch.time();
 
+    // init the validator using the schema corresponding to the specific cityjson instance
+    stopwatch.time();
+    let schemaStr = await GetCJSchema(cityjsonInstance);
+    validator = CityJsonValidator.new_from_string(schemaStr);
+    stopwatch.log("initalized validator.")
+
     // the actual validation
-    let res = validator.validate_from_str(cityjsonInstance);
+    let success = validator.validate_from_str(cityjsonInstance);
+    stopwatch.log("validated city.")
 
     // print feedback to user
     console.log("---------------");
     console.log("| Conclusion: |");
     console.log("---------------");
-    if (res) {
+    if (success) {
         console.log("json is valid!");
         logContext.style = "background: lightgreen";
     } else {

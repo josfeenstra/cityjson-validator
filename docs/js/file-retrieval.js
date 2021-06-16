@@ -34,19 +34,22 @@ function processFile(file, callback) {
  * @param {(a: string) => void} callback callback for what to do with the recovered data
  * @return {boolean} true on succes, false on failure 
  */
-function processMultipleFiles(files, callback, desiredExtention="json") {
+async function processMultipleFiles(files, callback, desiredExtention="json") {
 
+    console.clear();
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
         let type = getFileExtention(file.name);
         console.log(`file ${i}: name: ${file.name}, type: ${type}`)
         if (type == desiredExtention) {
             processFile(file, callback);
-            return;
+            //return;
+        } else {
+            console.log(`Can't process this file: Please give me something which ends on .${desiredExtention}!`);
         }
     }
 
-    alert(`please give me at least one file that ends on .${desiredExtention}!`);
+    
 }
 
 

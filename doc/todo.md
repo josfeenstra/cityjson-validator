@@ -90,9 +90,10 @@ Second mail from Hugo
         - [X] ignore hardcore validation: just parse the string, search for the `\"version\"\:` string exactly using regex
         - [X] pick latest version if you cannot find a version
         - [X] extract major and minor version
-        - [ ] make sure it exists, add some local fail-save if the website is down or something
-      - [ ] Fetch the this version from the site.
-        - [ ] solve cross origin funky business...
+        - [x] make sure it exists, add some local fail-save if the website is down or something
+      - [x] Fetch the this version from the site.
+        - [X] solve cross origin funky business local
+        - [X] solve cross origin funky business on github pages
 
 > [JF]: I will try to do this at the js side of things. Update: I got stuck at cross-origin troubles. Must learn more about cross-origin web pages in general...
 

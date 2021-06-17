@@ -72,11 +72,11 @@ async function GetCJSchema(cj) {
                 continue;
             }
             let [major, minor, patch, minorPatch] = deconstructVersion(v);
-            if (patch > bestPatch) {
+            if (parseInt(patch) > parseInt(bestPatch)) {
                 chosenVersion = v;
                 bestPatch = patch;
                 bestMinorPatch = minorPatch;
-            } else if (patch == bestPatch && minorPatch > bestMinorPatch) {
+            } else if (parseInt(patch) == parseInt(bestPatch) && parseInt(minorPatch) > parseInt(bestMinorPatch)) {
                 chosenVersion = v;
                 bestMinorPatch = minorPatch;
             }

@@ -57,13 +57,23 @@ async function GetCJSchema(cj) {
  * @param {string} version
  */
  async function GetLatestAvailableURL(version) {
-    let url = PATH_TO_CITYJSON_SCHEMA.replace("{}", version);
-    // let res = await fetch(PATH_TO_ALL_CITYJSON_SCHEMAS);
-    // console.log(res.json());
     
-    // TODO: I'm getting cross-origin troubles usng this directly, so im using a local file instead. 
-    // 
+    let url = "";
+    try {
+        // fetch all available versions
+        let res = await fetch(PATH_TO_ALL_CITYJSON_SCHEMAS);
+        console.log(res.json());
+
+        // see which ones corresponds to 'version'
+
+        // then pick the latest
+
+        // and contruct a url from it
+        url = PATH_TO_CITYJSON_SCHEMA.replace("{}", version);
+    } catch(e) {
+        console.log("NETWORK ERROR: switching to local cityjson schema v1.0.2")
+        url = LOCAL_PATH_TO_CITYJSON_SCHEMA;
+    }
     
-    url = LOCAL_PATH_TO_CITYJSON_SCHEMA;
     return url
 }

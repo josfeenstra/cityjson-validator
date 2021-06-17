@@ -55,7 +55,6 @@ async function validate(instanceStr) {
         console.log("json is NOT valid!");
         logContext.style = "background: pink";
     }
-    console.log("...");
     console.log("Have a nice day!");
 }
 
@@ -71,7 +70,7 @@ function highjackLogger(context) {
     
     console.log = function() {
         for (var i = 0; i < arguments.length; i++) {
-            let string = arguments[i].replace("\n", "<br\>");
+            let string = arguments[i].toString().replace("\n", "<br\>");
             context.innerHTML += '<code>' + string + '</code>'+  '<br/>';
         }
         console.logOld(...arguments);

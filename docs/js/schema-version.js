@@ -1,8 +1,8 @@
 export {getCJVersionFromString, GetCJSchema}
 
-const PATH_TO_CITYJSON_SCHEMA = "https://3d.bk.tudelft.nl/schemas/cityjson/{}/cityjson.min.schema.json";
-const PATH_TO_ALL_CITYJSON_SCHEMAS = "https://3d.bk.tudelft.nl/schemas/cityjson/";
-const LOCAL_PATH_TO_CITYJSON_SCHEMA = './data/cityjson.min.schema.json'
+const PATH_TO_CITYJSON_SCHEMA = `https://3d.bk.tudelft.nl/schemas/cityjson/{}/cityjson.min.schema.json`;
+const PATH_TO_ALL_CITYJSON_SCHEMAS = `https://3d.bk.tudelft.nl/schemas/cityjson/`;
+const LOCAL_PATH_TO_CITYJSON_SCHEMA = `./data/cityjson.min.schema.json`
 
 
 /**
@@ -41,10 +41,7 @@ async function GetCJSchema(cj) {
     if (matches && matches.length > 1) {
         let version = matches[1];
         console.log("cityjson version: " + version);
-        if (version.split('.').length > 2) {
-            let parts = version.split('.');
-            version = parts[0] + '.' + parts[1];
-        }
+        version = getBaseVersion(version);
         console.log("cityjson base version: " + version);
         return version;
     } 
@@ -62,18 +59,72 @@ async function GetCJSchema(cj) {
     try {
         // fetch all available versions
         let res = await fetch(PATH_TO_ALL_CITYJSON_SCHEMAS);
-        console.log(res.json());
+        let versionWebpage = await res.text();
+        let availableVersions = extractAvailableVersions(versionWebpage);
 
         // see which ones corresponds to 'version'
-
         // then pick the latest
+        let chosenVersion = "";
+        let bestPatch = '0';
+        let bestMinorPatch = '0';
+        for (let v of availableVersions) {
+            if (version !== getBaseVersion(v)) {
+                continue;
+            }
+            let [major, minor, patch, minorPatch] = deconstructVersion(v);
+            if (patch > bestPatch) {
+                chosenVersion = v;
+                bestPatch = patch;
+                bestMinorPatch = minorPatch;
+            } else if (patch == bestPatch && minorPatch > bestMinorPatch) {
+                chosenVersion = v;
+                bestMinorPatch = minorPatch;
+            }
+        }
 
-        // and contruct a url from it
-        url = PATH_TO_CITYJSON_SCHEMA.replace("{}", version);
+        // feedback
+        console.log("latest corresponding version: " + chosenVersion);
+
+        // contruct a url from it
+        url = PATH_TO_CITYJSON_SCHEMA.replace("{}", chosenVersion);
+
     } catch(e) {
+        console.log("" + e);
         console.log("NETWORK ERROR: switching to local cityjson schema v1.0.2")
         url = LOCAL_PATH_TO_CITYJSON_SCHEMA;
     }
     
     return url
+}
+
+/**
+ * [JF]: ehm... I dont know if this is a recommended way of doing things, 
+ * but... it works...
+ * @param {string} webPage 
+ */
+function extractAvailableVersions(webPage) {
+    let regex = /\<a.*?\>(.*?)<\/a>/gi;
+    let matches = webPage.matchAll(regex);
+
+    let availableVersions = [];
+    for (let match of matches) {
+        availableVersions.push(match[1].replace('\/', ''));
+    }
+    return availableVersions;
+}
+
+function getBaseVersion(version) {
+    if (version.split('.').length > 2) {
+        let parts = version.split('.');
+        version = parts[0] + '.' + parts[1];
+    }
+    return version;
+}
+
+function deconstructVersion(version) {
+    let comp = version.split('.');
+    while (comp.length < 4) {
+        comp.push('0');
+    }
+    return comp;
 }

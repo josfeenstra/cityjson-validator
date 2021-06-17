@@ -18,7 +18,7 @@ async function main() {
 
     // bootstrap all the file select / drag&drop functionality
     // once we get something with a .json extension -> pass its content as string to the 'validate' function
-    initFileRetrievers(validate);
+    initFileRetrievers(preValidate);
     
     // make sure we log straight into html 
     logContext = document.getElementsByClassName("output")[0];
@@ -26,17 +26,34 @@ async function main() {
 }
 
 /**
+ * Fire this before the actual process, to load the cj schema
+ * @param {string} instanceStr 
+ */
+async function preValidate(instanceStr) {
+    let schemaStr = await GetCJSchema(instanceStr);
+    validate(instanceStr, schemaStr);
+}
+
+/**
+ * If we want to avoid 'GetCJSchema', this how to directly load the local schema.
+ * @param {string} instanceStr 
+ */
+async function preValidateWithLocalSchema(instanceStr) {
+    const LOCAL_PATH_TO_CITYJSON_SCHEMA = `./data/cityjson.min.schema.json`
+    let res = await fetch(LOCAL_PATH_TO_CITYJSON_SCHEMA);
+    let schemaStr = await res.text();
+    validate(instanceStr, schemaStr);
+}
+
+
+/**
  * validate a cityjson
  * @param {string} instanceStr 
  */
-async function validate(instanceStr) {
+function validate(instanceStr, schemaStr) {
     
-    // prepare
-    stopwatch.time();
-
     // init the validator using the schema corresponding to the specific cityjson instance
-    stopwatch.time();
-    let schemaStr = await GetCJSchema(instanceStr);
+    stopwatch.log("fetched schema.")
     validator = CityJsonValidator.new_from_string(schemaStr);
     stopwatch.log("initalized validator.")
 
@@ -45,9 +62,9 @@ async function validate(instanceStr) {
     stopwatch.log("validated city.")
 
     // print feedback to user
-    console.log("---------------");
+    console.log("+-------------+");
     console.log("| Conclusion: |");
-    console.log("---------------");
+    console.log("+-------------+");
     if (success) {
         console.log("json is valid!");
         logContext.style = "background: lightgreen";

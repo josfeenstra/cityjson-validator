@@ -3,18 +3,21 @@
 // purpose: small helper class to do some perf testing
 
 export class Stopwatch {
-    constructor(oldTime, newTime) {}
+    constructor(oldTime) {
+        this.oldTime = oldTime;
+    }
 
     static new() {
-        let s = new Stopwatch(0, 0);
+        let s = new Stopwatch(0);
         s.time();
         return s;
     }
 
     time() {
-        this.newTime = this._getTime();
-        let timePast = this.newTime - this.oldTime;
-        this.oldTime = this.newTime;
+        
+        let newTime = this._getTime();
+        let timePast = newTime - this.oldTime;
+        this.oldTime = newTime;
         return timePast;
     }
 
@@ -23,6 +26,6 @@ export class Stopwatch {
     }
 
     _getTime() {
-        return new Date().getTime();
+        return performance.now();
     }
 }

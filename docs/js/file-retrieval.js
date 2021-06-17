@@ -34,7 +34,7 @@ function processFile(file, callback) {
  * @param {(a: string) => void} callback callback for what to do with the recovered data
  * @return {boolean} true on succes, false on failure 
  */
-async function processMultipleFiles(files, callback, desiredExtention="json") {
+function processMultipleFiles(files, callback, desiredExtention="json") {
 
     console.clear();
     for (let i = 0; i < files.length; i++) {

@@ -1,5 +1,9 @@
 # Cityjson schema validator, using Rust & Wasm 
 
+> 
+> NOTE : This project is superseded by the [Official CityJSON Validator](https://github.com/cityjson/cjval)
+>
+
 | | |
 |---|---|
 |Author | Jos Feenstra 
